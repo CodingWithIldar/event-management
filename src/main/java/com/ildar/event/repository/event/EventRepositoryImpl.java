@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Component
-@Profile("!dev")
+@Profile("dev")
 public class EventRepositoryImpl implements EventRepository {
 
     private final Map<String, Event> events = new ConcurrentHashMap<>();

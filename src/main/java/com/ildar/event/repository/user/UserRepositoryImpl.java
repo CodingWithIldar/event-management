@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 @Slf4j
-@Profile("!dev")
+@Profile("dev")
 public class UserRepositoryImpl implements UserRepository {
 
     //User_ID -> User
