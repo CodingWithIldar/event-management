@@ -3,7 +3,7 @@ package com.ildar.event.service;
 import com.ildar.event.domain.User;
 import com.ildar.event.dto.UserDTO;
 import com.ildar.event.dto.mapper.UserMapper;
-import com.ildar.event.repository.UserRepository;
+import com.ildar.event.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

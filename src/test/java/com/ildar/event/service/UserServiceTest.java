@@ -1,7 +1,7 @@
 package com.ildar.event.service;
 
 import com.ildar.event.dto.UserDTO;
-import com.ildar.event.repository.UserRepository;
+import com.ildar.event.repository.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

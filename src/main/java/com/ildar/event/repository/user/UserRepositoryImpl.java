@@ -1,4 +1,4 @@
-package com.ildar.event.repository;
+package com.ildar.event.repository.user;
 
 import com.ildar.event.domain.User;
 import lombok.extern.slf4j.Slf4j;
