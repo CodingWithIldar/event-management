@@ -37,4 +37,8 @@ public class Event {
 
     @OneToMany(mappedBy = "event")
     private List<EventRegistration> eventRegistrations;
+
+    public void incrementCurrentRegistrations() {
+        currentRegistrations++;
+    }
 }

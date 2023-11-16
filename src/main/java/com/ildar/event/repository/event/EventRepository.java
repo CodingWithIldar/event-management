@@ -14,4 +14,8 @@ public interface EventRepository {
     List<Event> findByLocation(String location);
 
     Event save(Event event);
+
+    boolean existsById(String eventId);
+
+    Optional<Event> selectForUpdate(String eventId);
 }

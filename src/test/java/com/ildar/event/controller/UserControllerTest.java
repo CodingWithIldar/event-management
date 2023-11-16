@@ -1,13 +1,8 @@
 package com.ildar.event.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ildar.event.dto.UserDTO;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 
 import static com.ildar.event.TestData.USER_DTOS;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -18,14 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-class UserControllerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    private final ObjectMapper objectMapper = new ObjectMapper();
+class UserControllerTest extends BaseControllerTest {
 
     @Test
     public void testCreate2UserThenGetThem() throws Exception {
@@ -37,7 +25,7 @@ class UserControllerTest {
             mockMvc.perform(post("/users")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(objectMapper.writeValueAsString(userDto)))
-                    .andExpect(status().isOk());
+                    .andExpect(status().isCreated());
         }
 
         mockMvc.perform(get("/users"))
