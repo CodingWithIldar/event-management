@@ -4,4 +4,6 @@ import com.ildar.event.domain.EventRegistration;
 
 public interface EventRegistrationRepository {
     EventRegistration save(EventRegistration eventRegistration);
+
+    void deleteAll();
 }

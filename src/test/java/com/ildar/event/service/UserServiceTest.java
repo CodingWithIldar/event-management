@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 class UserServiceTest {
 
-    @MockBean
+    @MockBean(name = "userRepository")
     private UserRepository userRepository;
     @Autowired
     private UserService userService;

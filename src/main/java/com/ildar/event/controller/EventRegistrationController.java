@@ -4,6 +4,7 @@ import com.ildar.event.dto.EventRegistrationDTO;
 import com.ildar.event.service.EventRegistrationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,6 @@ public class EventRegistrationController {
     public ResponseEntity<EventRegistrationDTO> createEventRegistration(
             @RequestBody @Valid EventRegistrationDTO eventRegistrationDTO) {
         EventRegistrationDTO eventRegistration = eventRegistrationService.registerUserForEvent(eventRegistrationDTO);
-        return ResponseEntity.ok(eventRegistration);
+        return new ResponseEntity<>(eventRegistration, HttpStatus.CREATED);
     }
 }

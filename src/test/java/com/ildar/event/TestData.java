@@ -21,6 +21,15 @@ public class TestData {
                     .build()
     );
 
+    public static final String EVENT_JSON =
+            "{" +
+                    "    \"title\": \"Java Conference\",\n" +
+                    "    \"description\": \"Java conf for beginners\",\n" +
+                    "    \"dateTime\": \"2023-11-16 12:00\",\n" +
+                    "    \"location\": \"London\",\n" +
+                    "    \"capacity\": \"200\"" +
+                    "}";
+
     public static final List<UserDTO> USER_DTOS = List.of(
             UserDTO.builder()
                     .email("email1@gmail.com")
