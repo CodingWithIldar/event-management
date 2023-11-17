@@ -58,4 +58,11 @@ public class EventService {
         return eventRepository.findById(eventId)
                 .orElseThrow(() -> new EventNotFoundException(eventId));
     }
+
+    /**
+     * @throws EventNotFoundException When an event with the specified ID wasn't found
+     */
+    public EventDTO getEventDTO(String eventId) {
+        return eventMapper.createDto(getEvent(eventId));
+    }
 }

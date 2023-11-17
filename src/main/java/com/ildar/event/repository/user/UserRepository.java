@@ -18,4 +18,8 @@ public interface UserRepository {
     boolean existsById(String id);
 
     void deleteAll();
+
+    boolean existsByUsername(String username);
+
+    boolean existsByEmail(String email);
 }
