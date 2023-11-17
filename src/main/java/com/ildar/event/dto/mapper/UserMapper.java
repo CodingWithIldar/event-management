@@ -20,7 +20,7 @@ public class UserMapper {
 
     public UserDTO createDto(User user) {
         return UserDTO.builder()
-                .userId(user.getId())
+                .userId(user.getUserId())
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .build();

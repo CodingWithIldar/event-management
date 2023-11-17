@@ -4,6 +4,7 @@ import com.ildar.event.domain.EventRegistration;
 import com.ildar.event.dto.EventRegistrationDTO;
 import com.ildar.event.dto.mapper.EventRegistrationMapper;
 import com.ildar.event.exception.EventNotFoundException;
+import com.ildar.event.exception.EventRegistrationExistsException;
 import com.ildar.event.exception.EventRegistrationNotFoundException;
 import com.ildar.event.exception.UserNotFoundException;
 import com.ildar.event.repository.eventregistration.EventRegistrationRepository;
@@ -30,6 +31,9 @@ public class EventRegistrationService {
         }
         if (!eventService.existsEvent(dto.eventId())) {
             throw new EventNotFoundException(dto.eventId());
+        }
+        if (eventRegistrationRepository.existsByUser_UserIdAndEvent_EventId(dto.userId(), dto.eventId())) {
+            throw new EventRegistrationExistsException(dto.userId(), dto.eventId());
         }
 
         eventService.incrementCurrentRegistrations(dto.eventId());

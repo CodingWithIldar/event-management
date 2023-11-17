@@ -10,4 +10,6 @@ public interface EventRegistrationRepository {
     void deleteAll();
 
     Optional<EventRegistration> findById(String eventRegistrationId);
+
+    boolean existsByUser_UserIdAndEvent_EventId(String userId, String eventId);
 }

@@ -27,6 +27,46 @@ public class EventRegistrationControllerTest extends BaseControllerTest {
     }
 
     @Test
+    public void testCreateEvent_EventRegistrationAlreadyExists_ShouldThrowEventRegistrationExistsException()
+            throws Exception {
+        MvcResult mvcResult = mockMvc.perform(post("/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(USER_DTOS.get(0))))
+                .andExpect(status().isCreated())
+                .andReturn();
+
+        String json = mvcResult.getResponse().getContentAsString();
+        String createdUserId = JsonPath.parse(json).read("$.userId", String.class);
+
+        mvcResult = mockMvc.perform(post("/events")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(EVENT_JSON))
+                .andExpect(status().isCreated())
+                .andReturn();
+
+        json = mvcResult.getResponse().getContentAsString();
+        String createdEventId = JsonPath.parse(json).read("$.eventId", String.class);
+
+        EventRegistrationDTO eventRegistrationDTO = EventRegistrationDTO.builder()
+                .eventId(createdEventId)
+                .userId(createdUserId)
+                .build();
+
+        mockMvc.perform(post("/eventRegistrations")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(eventRegistrationDTO)))
+                .andExpect(status().isCreated());
+
+        mockMvc.perform(post("/eventRegistrations")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(eventRegistrationDTO)))
+                .andExpect(status().isInternalServerError())
+                .andExpect(jsonPath("$.errorMessage",
+                        is("Event registration already exists for user "
+                                + createdUserId + " and event " + createdEventId)));
+    }
+
+    @Test
     public void testCreateEvent_EventCapacityAtMaximum_ShouldThrowEventCapacityExceededException() throws Exception {
         //todo
     }

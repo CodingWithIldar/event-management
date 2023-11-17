@@ -28,7 +28,7 @@ public class EventRegistrationMapper {
                 .builder()
                 .eventRegistrationId(eventRegistration.getEventRegistrationId())
                 .eventId(eventRegistration.getEvent().getEventId())
-                .userId(eventRegistration.getUser().getId())
+                .userId(eventRegistration.getUser().getUserId())
                 .registrationStatus(eventRegistration.getRegistrationStatus())
                 .build();
     }

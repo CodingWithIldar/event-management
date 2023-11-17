@@ -21,7 +21,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private String userId;
 
     @Column(unique = true)
     private String username;
