@@ -1,6 +1,8 @@
 package com.ildar.event;
 
+import com.ildar.event.domain.Event;
 import com.ildar.event.domain.User;
+import com.ildar.event.dto.EventDTO;
 import com.ildar.event.dto.UserDTO;
 import lombok.experimental.UtilityClass;
 
@@ -38,6 +40,36 @@ public class TestData {
             UserDTO.builder()
                     .email("email2@gmail.com")
                     .username("username2")
+                    .build()
+    );
+
+    public static final List<Event> EVENTS = List.of(
+            Event.builder()
+                    .title("title1")
+                    .description("description1")
+                    .capacity(200)
+                    .location("Location1")
+                    .build(),
+            Event.builder()
+                    .title("title1")
+                    .description("description1")
+                    .capacity(200)
+                    .location("Location2")
+                    .build()
+    );
+
+    public static final List<EventDTO> EVENT_DTOS = List.of(
+            EventDTO.builder()
+                    .title("title1")
+                    .description("description1")
+                    .capacity(200)
+                    .location("Location1")
+                    .build(),
+            EventDTO.builder()
+                    .title("title1")
+                    .description("description1")
+                    .capacity(200)
+                    .location("Location2")
                     .build()
     );
 }

@@ -1,11 +1,8 @@
 package com.ildar.event.service;
 
 import com.ildar.event.dto.UserDTO;
-import com.ildar.event.repository.user.UserRepository;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 
@@ -19,12 +16,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class UserServiceTest {
-
-    @MockBean(name = "userRepository")
-    private UserRepository userRepository;
-    @Autowired
-    private UserService userService;
+class UserServiceTest extends BaseServiceTest {
 
     @Test
     void getAllUsers_UsersReturned() {
