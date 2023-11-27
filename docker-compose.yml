@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  database:
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  event-management-service:
+    image: event-management:0.0.1
+    restart: always
+    environment:
+      DATABASE_URL: ${POSTGRES_URL}/${POSTGRES_DB}
+      DATABASE_USERNAME: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_PROFILES_ACTIVE: postgres
+    build:
+      context: .
+    depends_on:
+      - database
+    ports:
+      - "8090:8090"
